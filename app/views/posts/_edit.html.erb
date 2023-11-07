@@ -1,0 +1,18 @@
+<%= form_with model: @post, url: update_posts_path do |form| %>
+<div class="d-flex flex-column gap-4">
+  <div class="mb-3">
+    <%= form.label :title, class: "form-label" %>
+    <%= form.text_field :title, class: "form-control"%>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :body, class: "form-label"%>
+    <%= form.text_area :body, class: "form-control"%>
+  </div>
+
+  <div class="mb-3">
+    <%= form.submit class: "btn btn-primary" %>
+    <%= link_to "Back", show_posts_path(@post.id), class: "btn btn-secondary" %>
+  </div>
+</div>
+<%end %>

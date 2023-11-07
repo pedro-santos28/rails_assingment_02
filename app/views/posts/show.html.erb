@@ -1,0 +1,22 @@
+<div class="container p-5 d-flex flex-column gap-3 justify-content-center">
+  <h1 class="text-primary">
+    <%= @post.title %>
+  </h1>
+  <div class="form-floating">
+    <p>Content</p>
+    <textarea class="form-control" disabled id="floatingTextarea2" style="height: 100px">
+      <%= @post.body%>
+    </textarea>
+  </div>
+
+  <div>
+    <p>Author</p>
+    <h2><%= @post.user.name %></h2>
+  </div>
+  <div>
+    <%= link_to "Back", root_path, class: "btn btn-warning btn-lg" %>
+    <% if Current.user && Current.user.id == @post.user.id %> 
+      <%= link_to "Edit", edit_posts_path(@post.id), method: :put, class: "btn btn-secondary btn-lg" %>
+    <% end %>
+  </div>
+</div>

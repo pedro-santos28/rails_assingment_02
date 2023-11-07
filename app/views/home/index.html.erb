@@ -1,0 +1,41 @@
+<div class="container-fluid p-5">
+<div class="my-5">
+<% if Current.user %>
+  <h1 class="text-primary"> 
+    Welcome 
+    <%= Current.user.name %>
+  </h1> 
+<% end %>
+</div>
+
+<div class="d-flex justify-content-between align-items-center p-3 my-3">
+  <h1>Posts</h1>
+  <%= link_to "new post", posts_path, class: "btn btn-primary" %>
+</div>
+<table class="table table-hover"> 
+  <thead>
+    <tr>
+      <th></th>
+      <th>Title</th>
+      <th>Author</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @posts.each do |post| %>
+      <tr>
+        <td>
+          <%= post.id%>
+        </td>
+        <td>
+          <h3>
+             <%= link_to post.title, show_posts_path(post.id)%>
+          </h3>
+        </td>
+        <td>
+          <%= post.user.name%>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
