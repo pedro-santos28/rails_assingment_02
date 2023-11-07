@@ -5,20 +5,31 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav w-100 position-relative">
-        <li class="nav-item">
-          <%= link_to "Home", root_path, class: "nav-link" %> 
-        </li>
-        <li class="nav-item">
-          <%= link_to "Register", registrations_path, class: "nav-link" %> 
-        </li>
-        <li class="nav-item">
-          <%= link_to "Login", sessions_path, class: "nav-link" %> 
-        </li>
+      <ul class="navbar-nav w-100 d-flex align-items-center justify-content-between">
+        <div>
+          <li class="nav-item">
+            <%= link_to "Home", root_path, class: "nav-link" %> 
+          </li>
+        </div>
 
-        <li class="nav-item position-absolute end-0">
-          <%= button_to "Logout", sessions_path, method: :delete, class: "btn btn-warning" %>
-        </li>
+        <div class="d-flex ">
+          <% if !Current.user %>
+            <li class="nav-item">
+              <%= link_to "Register", registrations_path, class: "nav-link" %> 
+            </li>
+            <li class="nav-item">
+              <%= link_to "Login", sessions_path, class: "nav-link" %> 
+            </li>
+           <%else%>
+            <li class="nav-item">
+              <%= button_to "Logout", sessions_path, method: :delete, class: "btn btn-warning" %>
+            </li>
+          <%end %>
+         
+          
+        </div>
+
+       
       </ul>
     </div>
   </div>
